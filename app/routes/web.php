@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ServiceCotroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::get('/', HomeController::class)->name('home');
 //     return view('home');
 // });
 Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
+Route::get('/servicelist', [ServiceCotroller::class, 'index'])->name('servicelist');
 
 Route::middleware([
     'auth:sanctum',

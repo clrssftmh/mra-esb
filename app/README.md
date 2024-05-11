@@ -1,3 +1,42 @@
+
+## How to Install
+- Clone repository
+- Update composer
+- run npm 
+- install vite 
+
+
+
+
+
+### Note
+```
+Problem 1
+    - openspout/openspout v4.23.0 requires ext-zip * -> it is missing from your system. Install or enable PHP's zip extension.
+    - filament/filament v3.2.57 requires filament/actions v3.2.57 -> satisfiable by filament/actions[v3.2.57].
+    - filament/actions v3.2.57 requires openspout/openspout ^4.23 -> satisfiable by openspout/openspout[v4.23.0].
+    - Root composer.json requires filament/filament 3.2.57 -> satisfiable by filament/filament[v3.2.57].
+ ```
+jika terdapat error ketika update [Filamet](https://filamentphp.com/docs/3.x/panels/installation). di composer, uncommand (;) ```extension intl``` dan ```extension=intl``` di file php.ini local 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

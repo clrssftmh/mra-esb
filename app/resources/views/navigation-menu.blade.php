@@ -11,6 +11,9 @@
                 <x-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
                     {{ __('Blog') }}
                 </x-nav-link>
+                <x-nav-link href="{{ route('servicelist') }}" :active="request()->routeIs('servicelist')">
+                    {{ __('List Service ID') }}
+                </x-nav-link>
             </div>
         </div>
     </div>

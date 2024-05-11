@@ -24,10 +24,12 @@ class Postlist extends Component
         $this->sort = ($sort === 'desc') ? 'desc' : 'asc';
     }
 
-    #[On('search')]
+    #[On('search1')]
     public function updateSearch($search)
     {
+        // dd('tes');
         $this->search = $search;
+
     }
 
     #[Computed()]
@@ -36,7 +38,7 @@ class Postlist extends Component
         return Post::published()
             ->orderBy('published_at', $this->sort)
             ->where('title', 'like', "%{$this->search}%")
-            ->simplePaginate(3);
+            ->simplePaginate(4);
     }
 
     public function render()
