@@ -11,12 +11,13 @@ class PostController extends Controller
         return view(
             'posts.index',
             [
-                'posts' => Post::take(10)->get()
+                'posts' => Post::take(2)->get()
             ]
         );
     }
+    
 
     public function createrelato(){
-        
+
     }
 }

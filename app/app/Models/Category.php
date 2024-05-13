@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+    protected $guarded= [];
+
+    protected $fillable= [
+        'title',
+        'sllug',
+        'text_color',
+        'bg_color',
+    ];
 }
