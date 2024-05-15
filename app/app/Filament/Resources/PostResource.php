@@ -54,20 +54,19 @@ class PostResource extends Resource
                 )->columns(2),
                 Section::make('Meta')->schema(
                     [
-                        FileUpload::make('image')->image()->directory('posts/thumbnails'),
+                        FileUpload::make('image')
+                            ->image()
+                            ->directory('posts/thumbnails'),
                         DateTimePicker::make('published_at')->nullable(),
                         Checkbox::make('featured'),
-                        // Select::make('author')
-                        //     ->relationship('author', 'name')
-                        //     // ->searchable()
-                        //     ->required(),
-                        Select::make('user_id')->label('author')
-                            ->relationship('author', 'name'),
-
+                        Select::make('user_id')
+                            ->relationship('author', 'name')
+                            ->searchable()
+                            ->required(),
                         Select::make('categories')
                             ->multiple()
-                            ->searchable()
                             ->relationship('categories', 'title')
+                            ->searchable(),
                     ]
                 ),
             ]);
