@@ -1,9 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\ServiceCotroller;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,18 +17,16 @@ use App\Http\Controllers\ServiceCotroller;
 
 Route::get('/', HomeController::class)->name('home');
 
-// Route::get('/', function (){
-//     return view('home');
-// });
 Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
-Route::get('/servicelist', [ServiceCotroller::class, 'index'])->name('servicelist');
+
+Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
 });
