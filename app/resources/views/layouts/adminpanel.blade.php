@@ -18,11 +18,11 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="public/sbadmin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="public/public/css/v5/bootstrap.css">
 
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased ; ">
     <x-banner />
 
     @include('layouts.partials.header')

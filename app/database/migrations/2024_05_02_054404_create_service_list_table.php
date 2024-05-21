@@ -17,10 +17,12 @@ return new class extends Migration
 
 
 
-        Schema::create('service_list', function (Blueprint $table) {
-            $table->id();
-            $table->text('service_id');
+        Schema::create('service_lists', function (Blueprint $table) {
+            $table->id()->nullable();
+            $table->text('service_id')->nullable();
             $table->text('service_name');
+            $table->text('service_endpoint_esb');
+            $table->text('service_endpoint_msr');
             $table->text('service_desc');
             $table->text('service_postman');
             $table->foreignIdFor(User::class);
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('service_list');
+        Schema::dropIfExists('service_lists');
     }
 };

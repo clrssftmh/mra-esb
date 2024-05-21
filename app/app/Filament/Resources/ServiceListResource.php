@@ -12,6 +12,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Illuminate\Support\Str;
 
 class ServiceListResource extends Resource
 {
@@ -19,12 +22,42 @@ class ServiceListResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+
+    // Schema::create('service_list', function (Blueprint $table) {
+    //     $table->id();
+    //     $table->text('service_id');
+    //     $table->text('service_name');
+    //     $table->text('service_desc');
+    //     $table->text('service_postman');
+    //     $table->foreignIdFor(User::class);
+    //     $table->timestamps();
+
+
+    // TextInput::make('title')
+    //                 ->live()
+    //                 ->required()->minLength(1)->maxLength(150)
+    //                 ->afterStateUpdated(function(string $operation,$state, Forms\Set $set){ //$state
+    //                     if($operation === 'edit'){
+    //                         return;  //$operatition build in var for page admin (creat, edit)
+    //                     }
+
+    //                     $set('slug' , Str::slug($state));
+    //                 }),
+    //             TextInput::make('slug')->required()->unique(ignoreRecord: true)->maxLength(150),
+    //             TextInput::make('text_color')->nullable(),
+    //             TextInput::make('bg_color')->nullable(),
+
+
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                //
-            ]);
+        ->schema([
+            
+            TextInput::make('slug')->required()->unique(ignoreRecord: true)->maxLength(150),
+            TextInput::make('text_color')->nullable(),
+            TextInput::make('bg_color')->nullable(),
+
+        ]);
     }
 
     public static function table(Table $table): Table

@@ -17,12 +17,15 @@ class ServiceListFactory extends Factory
      */
     public function definition(): array
     {
+        static $me = 1;
         return [
 
-            'id' => $this->faker->shuffleString(4),
-            'service_id' => $this->faker->shuffleString(4),
-            'service_name'=> $this->faker->shuffleString(10),
-            'service_desc'=> $this->faker->paragraph(100),
+            'id' => $me++,
+            'service_id' => $this->faker->bothify('??-###'),
+            'service_name'=> $this->faker->text(10),
+            'service_endpoint_esb'=> $this->faker->url(),
+            'service_endpoint_msr'=> $this->faker->url(),
+            'service_desc'=> $this->faker->sentence(10),
             'service_postman' => $this->faker->paragraph(100),
             'user_id' => User::factory(),
 
