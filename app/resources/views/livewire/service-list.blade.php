@@ -59,7 +59,8 @@
                                         <td class="px-4 py-3">{{ $service->service_desc }}</td>
                                         <td class="px-4 py-3">{{ $service->service_endpoint_esb }}</td>
                                         <td class="px-4 py-3 flex items-center justify-end">
-                                            <button class="px-3 py-1 bg-red-500 text-white rounded">X</button>
+                                            <button class="px-3 py-1 bg-green-500 text-white rounded">
+                                                <i class='bx bx-bookmark nav_icon'></i></button>
                                         </td>
                                     </tr>
                                 @endforeach

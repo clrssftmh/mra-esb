@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Support\Str;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
 
 class ServiceListResource extends Resource
 {
@@ -52,10 +54,25 @@ class ServiceListResource extends Resource
     {
         return $form
         ->schema([
-            
-            TextInput::make('slug')->required()->unique(ignoreRecord: true)->maxLength(150),
-            TextInput::make('text_color')->nullable(),
-            TextInput::make('bg_color')->nullable(),
+            Section::make('Main Content')->schema([
+                TextInput::make('service_id')
+            ->required()->minLength(1)->maxLength(150),
+            TextInput::make('service_name')
+            ->required()->minLength(1)->maxLength(150),
+            TextInput::make('service_desc')
+            ->required()->minLength(1)->maxLength(150),
+            TextInput::make('service_endpoint_esb')
+            ->required()->minLength(1)->maxLength(150),
+            TextInput::make('service_endpoint_msr')
+            ->required()->minLength(1)->maxLength(150),
+            RichEditor::make('service_postman')
+            ->required()->minLength(1)->maxLength(1000),
+
+
+            ])->columns(1),
+
+
+
 
         ]);
     }
@@ -64,7 +81,12 @@ class ServiceListResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('service_id'),
+                TextColumn::make('service_name')->sortable()->searchable(),
+
+                TextColumn::make('service_endpoint_esb')->sortable()->searchable(),
+                TextColumn::make('service_endpoint_msr')->sortable()->searchable(),
+
             ])
             ->filters([
                 //RIYANDO FRIENDESWAN GINTING MUNTHE	iijj
