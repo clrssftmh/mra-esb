@@ -20,7 +20,7 @@ class serviceList extends Model
         'service_postman',
     ];
 
-    public function scopeSearch($query, $value){
+    public function search($query, $value){
         $query->where('service_name','like',"%{$value}%")
         ->orwhere('service_endpoint_esb','like',"%{$value}%")
         ->orwhere('service_endpoint_msr','like',"%{$value}%");
