@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="row" style="width: 120%">
     <section class="mt-10">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
@@ -14,40 +13,6 @@
                                         d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                                         clip-rule="evenodd" />
                                 </svg>
-=======
-<x-app-layout>
-    <div class="row" style="width: 120%">
-        <section class="mt-10">
-            <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-                <!-- Start coding here -->
-                <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
-                    <div class="flex items-center justify-between d p-4">
-                        <div class="flex">
-                            <div class="relative w-full">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                        fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                                <input wb.live.debounce.300ms="search" type="text"
-                                    style="padding-left:32px !important "
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
-                                    placeholder="Search" required="">
-                            </div>
-                        </div>
-                        <div class="flex space-x-3">
-                            <div class="flex space-x-3 items-center">
-                                <label class="w-40 text-sm font-medium text-gray-900">User Type :</label>
-                                <select
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                    <option value="">All</option>
-                                    <option value="0">User</option>
-                                    <option value="1">Admin</option>
-                                </select>
->>>>>>> 16b2fc229e8f99785f031a633492605832c67a61
                             </div>
                             <input wire:model.live.debounce.300ms="search" type="text"
                                 style="padding-left:32px !important "
@@ -93,9 +58,8 @@
                                     <td class="px-4 py-3">{{ $service->service_desc }}</td>
                                     <td class="px-4 py-3">{{ $service->service_endpoint_esb }}</td>
                                     <td class="px-4 py-3 flex items-center justify-end">
-                                        <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-                                            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-
+                                        <button class="px-3 py-1 bg-green-500 text-white rounded" data-bs-toggle="modal"
+                                            data-bs-target="#showdataModal">
                                             <i class='bx bx-bookmark nav_icon'></i></button>
                                     </td>
                                 </tr>
