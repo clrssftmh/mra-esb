@@ -199,36 +199,38 @@
             <div>
                 <div class="header_toggle" id="toggle_btn">
                     <a href="#" class="nav_logo">
-                        <i class='bx bx-menu ; color-white'></i>
-                        <span class="nav_logo-name">Menu</span>
+                        <i class="bx bx-menu" style="color:white"></i>
+                        <img style=" width: 5%;"src="http://127.0.0.1:8000/storage/posts/thumbnails/esbplaybook2.png">
                     </a>
                 </div>
                 <div class="nav_list">
                     <a href="{{ route('posts.index') }}" class="nav_link active">
-                        <i class='bx bx-grid-alt nav_icon'></i>
+                        <i class='bx bxs-book-content'></i>
                         <span class="nav_name">Tutorials</span>
                     </a>
                     <a href="{{ route('listservice') }}" class="nav_link">
-                        <i class='bx bx-user nav_icon'></i>
+                        <i class='bx bx-list-ul'></i>
                         <span class="nav_name">List service</span>
-                    </a> <a href="#" class="nav_link">
-                        <i class='bx bx-message-square-detail nav_icon'></i>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <i class='bx bxs-error'></i>
                         <span class="nav_name">List eror</span>
                     </a>
                     <a href="#" class="nav_link">
-                        <i class='bx bx-message-square-detail nav_icon'></i>
+                        <i class='bx bx-id-card'></i>
                         {{-- <i class='bx bx-bookmark nav_icon'></i> --}}
                         <span class="nav_name">Set rekening</span>
                     </a>
                     <a href="#" class="nav_link">
-                        <i class='bx bx-message-square-detail nav_icon'></i>
+                        <i class='bx bx-credit-card-alt' ></i>
                         {{-- <i class='bx bx-folder nav_icon'> --}}
                         </i> <span class="nav_name">Stastus kartu</span>
-                    </a> <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span
-                            class="nav_name">Stats</span> </a>
+                    </a> <a href="#" class="nav_link">
+                        <i class='bx bx-stats' ></i>
+                        <span class="nav_name">Stats</span> </a>
                 </div>
-            </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
-                    class="nav_name">SignOut</span> </a>
+            {{-- </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+                    class="nav_name">SignOut</span> </a> --}}
         </nav>
     </div>
 
