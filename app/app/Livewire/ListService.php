@@ -33,18 +33,6 @@ class ListService extends Component
 
     }
 
-<<<<<<< HEAD
-=======
-    // public function render()
-    // {
-    //     $search = search::where('service_name','like',"%{$value}%")
-    //             ->orwhere('service_endpoint_esb','like',"%{$value}%")
-    //             ->orwhere('service_endpoint_msr','like',"%{$value}%");
-    //     return view('liveware.search-')
-
-    // }
->>>>>>> 16b2fc229e8f99785f031a633492605832c67a61
-
 
     public function download($id){
         dd($id);
