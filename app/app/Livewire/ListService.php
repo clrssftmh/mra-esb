@@ -14,7 +14,22 @@ class ListService extends Component
     public $perPage = 10;
     public $search = '';
     public $type;
-    public $service_desc,$service_endpoint_esb ,$service_endpoint_msr,$service_postman;
+    public $modal = false;
+
+
+    public $service_desc,$service_endpoint_esb ,$service_endpoint_msr,$service_postman,$selectedService;
+
+    public function openModal($service)
+    {
+        $this->selectedService = $service;
+        $this->modal = true;
+    }
+    public function closeModal()
+    {
+        $this->modal = false;
+        $this->selectedService = null;
+    }
+
 
   public function changeUser($id)
   {

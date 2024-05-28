@@ -40,7 +40,7 @@
                                 <th scope="col" class="px-4 py-3">Service ID</th>
                                 <th scope="col" class="px-4 py-3">Service name</th>
                                 <th scope="col" class="px-4 py-3">url msr </th>
-                                <th scope="col" class="px-4 py-3">Description</th>
+                                {{-- <th scope="col" class="px-4 py-3">Description</th> --}}
                                 <th scope="col" class="px-4 py-3">url esb</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
@@ -55,12 +55,12 @@
                                     <td class="px-4 py-3">{{ $service->service_name }}</td>
                                     <td class="px-4 py-3 text-green-500">
                                         {{ $service->service_endpoint_msr }}</td>
-                                    <td class="px-4 py-3">{{ $service->service_desc }}</td>
+                                    {{-- <td class="px-4 py-3">{{ $service->service_desc }}</td> --}}
                                     <td class="px-4 py-3">{{ $service->service_endpoint_esb }}</td>
                                     <td class="px-4 py-3 flex items-center justify-end">
-                                        <button class="px-3 py-1 bg-green-500 text-white rounded" data-bs-toggle="modal"
-                                            data-bs-target="#showdataModal">
-                                            <i class='bx bx-bookmark nav_icon'></i></button>
+                                        <button class="px-3 py-1 bg-green-500 text-white rounded"
+                                            wire:click="openModal({{ $service }})">
+                                            <i class='bx bxs-show '></i></button>
                                     </td>
                                 </tr>
                                 <x-posts.modal-showdata :service="$service" />
@@ -91,5 +91,52 @@
             </div>
         </div>
     </section>
+
+    @if ($modal)
+        <div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+                <div class="px-4 py-5 sm:px-6 bg-gray-100 flex justify-between items-center">
+                    <h4 class="text-lg font-medium leading-6 text-gray-900"> Service name</h4>
+                    <h5 class="text-lg font-small leading-9 text-gray-900">{{ $selectedService['service_name'] }}</h5>
+                    <button type="button" class="text-gray-400 hover:text-gray-600" wire:click="closeModal">
+                        &times;
+                    </button>
+                </div>
+                <div class="px-4 py-5 sm:p-6">
+                    <h5> Service Description</h5>
+                    <p>{{ $selectedService['service_desc'] }}</p>
+                    <!-- Add other details as needed -->
+                </div>
+                <div class="px-4 py-5 sm:p-6 w-full">
+
+                    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">
+                        Sample Request</label>
+                    <textarea id="message" rows="4"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-neutral-100 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="{{ $selectedService['service_desc'] }}"></textarea>
+
+                </div>
+
+
+                <div class="px-4 py-5 sm:p-6 w-full">
+                    <a type="button" class="px-4 py-2 mr-2 text-white bg-orange-500 rounded-md hover:bg-orange-700"
+                        wire:click="download({{ $selectedService['service_id'] }})">
+                        <i class='bx bx-cloud-download bx-flashing'>
+                            dowload
+                        </i></a>
+
+                </div>
+
+
+                <div class="px-4 py-4 sm:px-6 bg-gray-100 flex justify-end">
+                    <button type="button" class="px-4 py-2 mr-2 text-white bg-gray-500 rounded-md hover:bg-gray-700"
+                        wire:click="closeModal">Close</button>
+                    <button type="button" class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-700">Save
+                        changes</button>
+                </div>
+            </div>
+            </section>
+        </div>
+    @endif
 
 </div>
