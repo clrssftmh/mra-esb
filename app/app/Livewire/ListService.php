@@ -50,12 +50,6 @@ class ListService extends Component
 
 
     public function download($id){
-        dd($id);
-        // return view('livewire.service-list',[
-        //     'servicelists' =>  serviceList::where($id)
-
-        // ]);
-
+        return ['PostmanFileDownload'];
     }
-
 }
