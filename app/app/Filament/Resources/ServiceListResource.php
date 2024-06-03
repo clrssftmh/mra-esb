@@ -17,6 +17,7 @@ use Filament\Forms\Components\TextInput;
 use Illuminate\Support\Str;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\FileUpload;
 
 class ServiceListResource extends Resource
 {
@@ -65,8 +66,12 @@ class ServiceListResource extends Resource
             ->required()->minLength(1)->maxLength(150),
             TextInput::make('service_endpoint_msr')
             ->required()->minLength(1)->maxLength(150),
-            RichEditor::make('service_postman')
-            ->required()->minLength(1)->maxLength(1000),
+            FileUpload::make('service_postman')
+            ->directory('posts/json_files') // Specify the directory where JSON files will be stored
+            ->acceptedFileTypes(['application/json']) // Accept only JSON files
+            ->maxSize(10240) // Optional: Limit the maximum file size (in KB)
+            ->required() // Make the field required
+            ->label('Service Postman (JSON File)') // Optional: Add a label
 
 
             ])->columns(1),
@@ -86,7 +91,7 @@ class ServiceListResource extends Resource
 
                 TextColumn::make('service_endpoint_esb')->sortable()->searchable(),
                 TextColumn::make('service_endpoint_msr')->sortable()->searchable(),
-
+                TextColumn::make('service_postman')->sortable()->searchable(),
             ])
             ->filters([
                 //RIYANDO FRIENDESWAN GINTING MUNTHE	iijj
