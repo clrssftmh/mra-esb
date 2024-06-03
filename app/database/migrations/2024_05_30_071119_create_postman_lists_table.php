@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('no_postman');
             $table->foreignId('service_name')->references('service_name')->on('service_list')->S();
             $table->text('file_postman'); //pke longblob kl g muats
+            $table->text('service_id');
             //tambahin yg download
             $table->timestamps();
         });

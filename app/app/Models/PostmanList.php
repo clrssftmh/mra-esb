@@ -9,9 +9,12 @@ class PostmanList extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'no_postman';
+
     protected $fillable = [
         'no_postman',
         'service_name',
-        'file_postman'
+        'file_postman',
+        'service_id'
     ];
 }

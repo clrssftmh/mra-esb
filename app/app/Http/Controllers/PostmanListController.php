@@ -34,12 +34,31 @@ class PostmanListController extends Controller
     /**
      * Display the specified resource.
      */
+    // public function show(string $service_id)
+    // {
+    //     // Set header content-type
+    //     header('Content-Type: application/json; charset=utf-8');
+    //     header('Content-Disposition: attachment; filename=postman_file.json');
+
+    //     return PostmanList::find($service_id);
+    // }
+
     public function show(string $service_id)
     {
-        // Set header content-type
-        header('Content-Type: application/json; charset=utf-8');
-        header('Content-Disposition: attachment; filename="postman_file.json"');
-        return PostmanList::find($service_id);
+        // Fetch the data from the database using the service_id
+        $postmanData = PostmanList::where('service_id', $service_id)->first();
+
+        if (!$postmanData) {
+            return response()->json(['error' => 'Service not found'], 404);
+        }
+
+        // Convert the data to JSON
+        $jsonData = $postmanData->toJson();
+
+        // Set headers and return the response for file download
+        return response($jsonData)
+            ->header('Content-Type', 'application/json; charset=utf-8')
+            ->header('Content-Disposition', 'attachment; filename=postman_file.json');
     }
 
     /**

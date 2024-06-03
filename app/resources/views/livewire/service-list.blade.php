@@ -122,7 +122,7 @@
                     <a type="button" class="px-4 py-2 mr-2 text-white bg-orange-500 rounded-md hover:bg-orange-700" href="/download_postman/{{ $selectedService['service_id'] }}"
                         {{-- wire:click="download({{ $selectedService['service_id'] }})"> --}}
                         <i class='bx bx-cloud-download bx-flashing'>
-                            dowload
+                            download
                         </i></a>
 
                 </div>
