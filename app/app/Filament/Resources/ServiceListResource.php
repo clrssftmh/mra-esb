@@ -85,7 +85,7 @@ class ServiceListResource extends Resource
                 TextColumn::make('service_name')->sortable()->searchable(),
 
                 TextColumn::make('service_endpoint_esb')->sortable()->searchable(),
-                TextColumn::make('service_endpoint_msr')->sortable()->searchable(),
+                     
 
             ])
             ->filters([
