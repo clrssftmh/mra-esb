@@ -60,39 +60,19 @@ class PostmanListController extends Controller
     //     return response($jsonData)
     //         ->header('Content-Type', 'application/json; charset=utf-8')
     //         ->header('Content-Disposition', 'attachment; filename=postman_file.json');
-    // }
-
-    public function show($id)
+    //
+    public function downloadFile($id)
     {
-        // Find the service by ID
-        $service = ServiceList::findOrFail($id);
+        // Find the serviceList by ID
+        $serviceList = serviceList::findOrFail($id);
 
-        // // Get the JSON content from the service_postman column
-        // $jsonContent = $service->service_postman;
-
-        // // Generate a temporary file path to store the JSON content
-        // $tempFilePath = tempnam(sys_get_temp_dir(), 'service_postman_');
-
-        // // Write the JSON content to the temporary file
-        // file_put_contents($tempFilePath, $jsonContent);
-
-        // // Set the file name for download
-        // $fileName = 'service_postman_' . $service->id . '.json';
-
-        // // Return the JSON file as a downloadable response
-        // return response()->download($tempFilePath, $fileName)->deleteFileAfterSend(true);
-        // Get the file path from the storage
-
-        $filePath = Storage::path($service);
-
-        // Check if the file exists
-        if (!Storage::exists($filename)) {
-            abort(404, 'File not found');
-        }
+        // Retrieve the file content from the service_postman column
+        $fileContent = $serviceList->service_postman;
 
         // Return a response to download the file
-        return response()->download($filePath);
-    }
+        return response()->streamDownload(function () use ($fileContent) {
+            echo $fileContent;
+        }, 'service_postman.json');
     }
 
     /**

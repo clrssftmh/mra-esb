@@ -19,8 +19,11 @@ use App\Livewire\ListService;
 |
 */
 
+
 Route::get('/', HomeController::class)->name('home');
-Route::get('/download_postman/{id}', [PostmanListController::class, 'show']);
+// Route::get('/download_postman/{id}', [PostmanListController::class, 'downloadFile'])->name('serviceList.download');
+
+Route::get('/download_postman/{id}', [ServiceCotroller::class, 'downloadPostman']);
 
 Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
 
