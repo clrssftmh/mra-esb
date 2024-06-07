@@ -43,7 +43,7 @@
     <script>
         $(document).ready(function(e) {
             $("#toggle_btn").click(function() {
-                alert("Hi click");
+                window.location.href = "http://127.0.0.1:8000/";
             });
         });
 
