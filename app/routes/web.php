@@ -7,7 +7,7 @@ use App\Http\Controllers\PostmanListController;
 use App\Http\Controllers\ServiceCotroller;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ListService;
-
+use App\Livewire\ChannelIdsComponent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +19,7 @@ use App\Livewire\ListService;
 |
 */
 
-
+Route::get('/home', ChannelIdsComponent::class);
 Route::get('/', HomeController::class)->name('home');
 // Route::get('/download_postman/{id}', [PostmanListController::class, 'downloadFile'])->name('serviceList.download');
 

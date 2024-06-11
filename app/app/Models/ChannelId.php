@@ -11,7 +11,8 @@ class ChannelId extends Model
     protected $fillable = [
         'channel_id',
         'channel_description',
-        'channel_name'];
+        'channel_name',
+        'image'];
 
         public function service_list()
     {

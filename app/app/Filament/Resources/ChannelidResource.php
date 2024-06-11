@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
 
 
 
@@ -31,6 +33,7 @@ class ChannelidResource extends Resource
                 TextInput::make('channel_id')->required()->unique(ignoreRecord: true)->maxLength(50),
                 TextInput::make('channel_name')->nullable(),
                 RichEditor::make('channel_desc')->nullable()->columnSpanFull(),
+                FileUpload::make('image')->image()->directory('posts/thumbnails'),
             ])->columns(2);
     }
 
@@ -38,6 +41,7 @@ class ChannelidResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('image'),
                 TextColumn::make('channel_id'),
                 TextColumn::make('channel_name')->sortable()->searchable(),
                 TextColumn::make('channel_desc')->wrap()->words(5),

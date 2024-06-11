@@ -204,13 +204,13 @@
                     </a>
                 </div>
                 <div class="nav_list">
+                    <a href="{{ route('listservice') }}" class="nav_link">
+                        <i class='bx bx-folder-minus'></i>
+                        <span class="nav_name">List service</span>
+                    </a>
                     <a href="{{ route('posts.index') }}" class="nav_link">
                         <i class='bx bxs-book-content'></i>
                         <span class="nav_name">Tutorials</span>
-                    </a>
-                    <a href="{{ route('listservice') }}" class="nav_link">
-                        <i class='bx bx-list-ul'></i>
-                        <span class="nav_name">List service</span>
                     </a>
                     <a href="#" class="nav_link">
                         <i class='bx bxs-error'></i>
