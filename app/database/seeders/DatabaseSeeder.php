@@ -15,6 +15,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\Post::factory(50)->create();
         \App\Models\Category::factory(5)->create();
         \App\Models\ServiceList::factory(70)->create();
+        \App\Models\PostmanList::factory()->count(70)->create();
+        \App\Models\serviceList::factory()->count(10)->create();
+        \App\Models\ChannelId::factory()->count(10)->create();
+
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

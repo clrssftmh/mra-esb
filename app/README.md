@@ -1,41 +1,25 @@
-
 ## How to Install
-- Clone repository
-- Update composer
-- run npm 
-- install vite 
 
-
-
-
+-   Clone repository
+-   Update composer
+-   run npm
+-   install vite
+-   run migration to create db `php artisane migrate`
+-   create dummy data `php artisan db:seed`
+-   run laravel
+    ` php artisan serve`
 
 ### Note
+
 ```
 Problem 1
     - openspout/openspout v4.23.0 requires ext-zip * -> it is missing from your system. Install or enable PHP's zip extension.
     - filament/filament v3.2.57 requires filament/actions v3.2.57 -> satisfiable by filament/actions[v3.2.57].
     - filament/actions v3.2.57 requires openspout/openspout ^4.23 -> satisfiable by openspout/openspout[v4.23.0].
     - Root composer.json requires filament/filament 3.2.57 -> satisfiable by filament/filament[v3.2.57].
- ```
-jika terdapat error ketika update [Filamet](https://filamentphp.com/docs/3.x/panels/installation). di composer, uncommand (;) ```extension intl``` dan ```extension=intl``` di file php.ini local 
- 
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+jika terdapat error ketika update [Filamet](https://filamentphp.com/docs/3.x/panels/installation). di composer, uncommand (;) `extension intl` dan `extension=intl` di file php.ini local
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
@@ -50,13 +34,13 @@ jika terdapat error ketika update [Filamet](https://filamentphp.com/docs/3.x/pan
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   [Simple, fast routing engine](https://laravel.com/docs/routing).
+-   [Powerful dependency injection container](https://laravel.com/docs/container).
+-   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+-   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+-   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+-   [Robust background job processing](https://laravel.com/docs/queues).
+-   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
@@ -74,19 +58,19 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-   **[Vehikl](https://vehikl.com/)**
+-   **[Tighten Co.](https://tighten.co)**
+-   **[WebReinvent](https://webreinvent.com/)**
+-   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+-   **[64 Robots](https://64robots.com)**
+-   **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+-   **[Cyber-Duck](https://cyber-duck.co.uk)**
+-   **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+-   **[Jump24](https://jump24.co.uk)**
+-   **[Redberry](https://redberry.international/laravel/)**
+-   **[Active Logic](https://activelogic.com)**
+-   **[byte5](https://byte5.de)**
+-   **[OP.GG](https://op.gg)**
 
 ## Contributing
 

@@ -3,6 +3,7 @@
 use AnourValar\EloquentSerialize\Service;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostmanListController;
 use App\Http\Controllers\ServiceCotroller;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ListService;
@@ -19,6 +20,7 @@ use App\Livewire\ListService;
 */
 
 Route::get('/', HomeController::class)->name('home');
+Route::get('/download_postman/{id}', [PostmanListController::class, 'show']);
 
 Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
 
@@ -40,3 +42,5 @@ Route::middleware([
     //     return view('dashboard');
     // })->name('dashboard');
 });
+
+Route::get('/download_postman/{id}', [ServiceCotroller::class, 'downloadPostman']);

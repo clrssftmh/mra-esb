@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
-
+use App\Models\ChannelId;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ServiceList>
  */
@@ -22,12 +22,13 @@ class ServiceListFactory extends Factory
 
             'id' => $me++,
             'service_id' => $this->faker->bothify('??-###'),
-            'service_name'=> $this->faker->text(10),
+            'service_name'=> $this->faker->word(),//->unique(),
             'service_endpoint_esb'=> $this->faker->url(),
             'service_endpoint_msr'=> $this->faker->url(),
             'service_desc'=> $this->faker->sentence(10),
             'service_postman' => $this->faker->paragraph(100),
             'user_id' => User::factory(),
+            'channel_id' => Channelid::factory()
 
 
 

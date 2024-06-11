@@ -17,6 +17,8 @@ use Filament\Forms\Components\TextInput;
 use Illuminate\Support\Str;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 
 class ServiceListResource extends Resource
 {
@@ -63,10 +65,20 @@ class ServiceListResource extends Resource
             ->required()->minLength(1)->maxLength(150),
             TextInput::make('service_endpoint_esb')
             ->required()->minLength(1)->maxLength(150),
+            Select::make('channel_id')
+                            ->multiple()
+                            ->relationship('channelid', 'channel_name')
+                            ->searchable()
+            ->native(true),
             TextInput::make('service_endpoint_msr')
             ->required()->minLength(1)->maxLength(150),
-            RichEditor::make('service_postman')
-            ->required()->minLength(1)->maxLength(1000),
+            FileUpload::make('service_postman')
+            ->directory('posts/json_files') // Specify the directory where JSON files will be stored
+            ->acceptedFileTypes(['application/json']) // Accept only JSON files
+            ->maxSize(10240) // Optional: Limit the maximum file size (in KB)
+            ->required() // Make the field required
+            ->label('Service Postman (JSON File)'), // Optional: Add a label,
+
 
 
             ])->columns(1),
@@ -83,9 +95,9 @@ class ServiceListResource extends Resource
             ->columns([
                 TextColumn::make('service_id'),
                 TextColumn::make('service_name')->sortable()->searchable(),
-
                 TextColumn::make('service_endpoint_esb')->sortable()->searchable(),
-                     
+                TextColumn::make('service_endpoint_msr')->sortable()->searchable(),
+                TextColumn::make('service_postman')->wrap()->words(5)->sortable()->searchable(),
 
             ])
             ->filters([

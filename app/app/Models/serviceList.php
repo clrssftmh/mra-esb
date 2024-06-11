@@ -18,13 +18,21 @@ class serviceList extends Model
         'service_endpoint_esb',
         'service_endpoint_msr',
         'service_postman',
+        // 'channel_id'
     ];
 
     public function scopeSearch($query, $value){
         $query->where('service_name','like',"%{$value}%")
         ->orwhere('service_endpoint_esb','like',"%{$value}%")
-        ->orwhere('service_endpoint_msr','like',"%{$value}%");
+        ->orwhere('service_endpoint_msr','like',"%{$value}%")
+        ->orwhere('service_postman','like',"%{$value}%");;
 
+
+    }
+
+    public function channelid()
+    {
+        return $this->belongsToMany(ChannelId::class);
     }
 
 
