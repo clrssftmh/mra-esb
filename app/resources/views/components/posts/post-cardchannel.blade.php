@@ -1,19 +1,17 @@
-@props(['post'])
+@props(['channel'])
 
 <div {{ $attributes }}>
-    <a wire:navigate href="{{ route('posts.show', $post->slug) }}">
+    <a wire:navigate href="{{ route('channels.show', $channel->channel_name) }}">
         <div>
-            <img class="w-full rounded-xl" src="{{ $post->getThumbnailUrl() }}">
+            <img class="w-full rounded-xl" src="{{ $channel->getThumbnailUrl() }}">
         </div>
     </a>
     <div class="mt-3">
         <div class="flex items-center mb-2 gap-x-2">
-            @if ($category = $post->categories()->first())
-                <x-posts.category-badge :category="$category" />
-            @endif
-            <p class="text-sm text-gray-500">{{ $post->published_at }}</p>
+            <a wire:navigate href="{{ route('channels.show', $channel->channel_name) }}"
+                class="text-xl font-bold text-gray-900">{{ $channel->channel_name }}</a>
         </div>
-        <a wire:navigate href="{{ route('posts.show', $post->slug) }}"
-            class="text-xl font-bold text-gray-900">{{ $post->title }}</a>
+
     </div>
 </div>
+

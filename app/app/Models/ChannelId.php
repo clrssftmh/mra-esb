@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class ChannelId extends Model
 {
@@ -19,7 +20,12 @@ class ChannelId extends Model
         return $this->belongsToMany(serviceList::class);
     }
 
+    public function getThumbnailUrl()
+    {
+        $isUrl = str_contains($this->image, 'http');
 
+        return ($isUrl) ? $this->image : Storage::disk('public')->url($this->image);
+    }
 
 
 }

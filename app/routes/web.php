@@ -3,6 +3,7 @@
 use AnourValar\EloquentSerialize\Service;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\PostmanListController;
 use App\Http\Controllers\ServiceCotroller;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,10 @@ use App\Livewire\ChannelIdsComponent;
 */
 
 Route::get('/home', ChannelIdsComponent::class);
+Route::get('channels/{channel:channel_name}', [ChannelController::class, 'show'])->name('channels.show');
+
+
+// Route::get('/channels', [ChannelIdsComponent::class, 'index'])->name('channels.index');
 Route::get('/', HomeController::class)->name('home');
 // Route::get('/download_postman/{id}', [PostmanListController::class, 'downloadFile'])->name('serviceList.download');
 

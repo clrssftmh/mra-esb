@@ -24,7 +24,7 @@
         </div>
         <hr>
 
-        {{-- <div class="mb-16">
+        <div class="mb-16">
             <h2 class="mt-16 mb-5 text-3xl text-yellow-500 font-bold">Featured Posts</h2>
             <div class="w-full">
                 <div class="grid grid-cols-3 gap-10 w-full">
@@ -36,7 +36,7 @@
             <a class="mt-10 block text-center text-lg text-yellow-500 font-semibold"
                 href="http://127.0.0.1:8000/blog">More
                 Posts</a>
-        </div> --}}
+        </div>
         <hr>
 
         <h2 class="mt-16 mb-5 text-3xl text-yellow-500 font-bold">Latest Posts</h2>
