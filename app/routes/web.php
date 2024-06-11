@@ -21,13 +21,9 @@ use App\Livewire\ListService;
 
 
 Route::get('/', HomeController::class)->name('home');
-<<<<<<< HEAD
-Route::get('/download_postman/{id}', [PostmanListController::class, 'show']);
-=======
 // Route::get('/download_postman/{id}', [PostmanListController::class, 'downloadFile'])->name('serviceList.download');
 
 Route::get('/download_postman/{id}', [ServiceCotroller::class, 'downloadPostman']);
->>>>>>> 6cda0da323414c21696d92d06f7bf45ef0bb21a5
 
 Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
 
@@ -49,5 +45,3 @@ Route::middleware([
     //     return view('dashboard');
     // })->name('dashboard');
 });
-
-Route::get('/download_postman/{id}', [ServiceCotroller::class, 'downloadPostman']);
