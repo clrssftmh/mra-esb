@@ -18,6 +18,7 @@ use Illuminate\Support\Str;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\FileUpload;
+
 use Filament\Forms\Components\Select;
 
 class ServiceListResource extends Resource
@@ -78,9 +79,6 @@ class ServiceListResource extends Resource
             ->maxSize(10240) // Optional: Limit the maximum file size (in KB)
             ->required() // Make the field required
             ->label('Service Postman (JSON File)'), // Optional: Add a label,
-
-
-
             ])->columns(1),
 
 
@@ -97,9 +95,10 @@ class ServiceListResource extends Resource
                 TextColumn::make('service_name')->sortable()->searchable(),
                 TextColumn::make('service_endpoint_esb')->sortable()->searchable(),
                 TextColumn::make('service_endpoint_msr')->sortable()->searchable(),
+
                 TextColumn::make('service_postman')->wrap()->words(5)->sortable()->searchable(),
 
-            ])
+                TextColumn::make('service_postman')->sortable()->searchable()
             ->filters([
                 //RIYANDO FRIENDESWAN GINTING MUNTHE	iijj
             ])
@@ -109,8 +108,9 @@ class ServiceListResource extends Resource
             ->bulkActions([
                         Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+                ])
+            ])
+        ]);
     }
 
     public static function getRelations(): array

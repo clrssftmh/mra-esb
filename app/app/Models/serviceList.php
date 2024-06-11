@@ -28,6 +28,7 @@ class serviceList extends Model
         ->orwhere('service_postman','like',"%{$value}%");;
 
 
+
     }
 
     public function channelid()

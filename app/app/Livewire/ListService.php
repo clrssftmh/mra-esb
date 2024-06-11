@@ -5,6 +5,8 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\serviceList;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Response;
+
 
 class ListService extends Component
 {
@@ -36,26 +38,64 @@ class ListService extends Component
     dd($id);
   }
 
+    // public function render()
+    // {
+    //     $allservice = serviceList::get();
+
+
+    //     return view('livewire.service-list',[
+    //         'servicelists' =>  serviceList::search($this->search)->paginate($this->perPage)
+
+    //     ])->layout('layouts.app');
+
+    // }
+
+
+    // public function render()
+    // {
+    //     $allservice = serviceList::get();
+
+    //     return view('livewire.service-list', [
+    //         'servicelists' => serviceList::search($this->search)->paginate($this->perPage)
+    //     ])->layout('layouts.app');
+    // }
+
+
+    public function download($id){
+        return ['PostmanFileDownload'];
+    }
+
+    // public function downloadPostman($id)
+    // {
+    //     $service = serviceList::findOrFail($id);
+    //     $filePath = $service->service_postman;
+
+    //     if (Storage::exists($filePath)) {
+    //         $jsonContent = Storage::get($filePath);
+
+    //         $filename = 'service_postman_' . $id . '.json';
+    //         $headers = [
+    //             'Content-Type' => 'application/json',
+    //             'Content-Disposition' => "attachment; filename=\"$filename\"",
+    //         ];
+
+    //         return Response::make($jsonContent, 200, $headers);
+    //     } else {
+    //         return abort(404, 'File not found');
+    //     }
+    // }
+
+    public function downloadPostman($id)
+    {
+        return redirect()->to('/download_postman/' . $id);
+    }
+
     public function render()
     {
         $allservice = serviceList::get();
 
-
-        return view('livewire.service-list',[
-            'servicelists' =>  serviceList::search($this->search)->paginate($this->perPage)
-
+        return view('livewire.service-list', [
+            'servicelists' => serviceList::search($this->search)->paginate($this->perPage)
         ])->layout('layouts.app');
-
     }
-
-
-    public function download($id){
-        dd($id);
-        // return view('livewire.service-list',[
-        //     'servicelists' =>  serviceList::where($id)
-
-        // ]);
-
-    }
-
 }

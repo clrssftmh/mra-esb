@@ -1,6 +1,10 @@
 <?php
 
 namespace app\Http\Controllers;
+use App\Models\serviceList;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
 
@@ -63,5 +67,27 @@ class ServiceCotroller extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function downloadPostman($id)
+    {
+        $service = serviceList::findOrFail($id);
+        $filePath = $service->service_postman; // Adjust the path based on your storage structure
+
+        // Log::info('File path: ' . $filePath);
+        // dd($filePath);
+        if (Storage::disk('public')->exists($filePath)) {
+            $jsonContent = Storage::disk('public')->get($filePath);
+
+            $filename = 'service_postman_' . $id . '.json';
+            $headers = [
+                'Content-Type' => 'application/json',
+                'Content-Disposition' => "attachment; filename=\"$filename\"",
+            ];
+
+            return Response::make($jsonContent, 200, $headers);
+        } else {
+            return abort(404, 'File not found');
+        }
     }
 }

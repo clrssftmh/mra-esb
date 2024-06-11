@@ -117,15 +117,36 @@
 
                 </div>
 
-
+{{--
                 <div class="px-4 py-5 sm:p-6 w-full">
+<<<<<<< HEAD
                     <button type="button"
                         class="px-4 py-2 mr-2 text-white bg-orange-500 rounded-md hover:bg-orange-700"
                         wire:click="downloadPostman({{ $selectedService['id'] }})">
                         <i class='bx bx-cloud-download bx-flashing'> download </i>
                     </button>
                 </div>
+=======
+                    <a type="button" class="px-4 py-2 mr-2 text-white bg-orange-500 rounded-md hover:bg-orange-700" href="/download_postman/{{ $selectedService['id'] }}"
+                        {{-- wire:click="download({{ $selectedService['service_id'] }})"> --}}
+                        {{-- <i class='bx bx-cloud-download bx-flashing'>
+                            download
+                        </i></a>
 
+                </div> --}}
+>>>>>>> 6cda0da323414c21696d92d06f7bf45ef0bb21a5
+
+                {{-- <div class="px-4 py-5 sm:p-6 w-full">
+                    <button type="button" class="px-4 py-2 mr-2 text-white bg-orange-500 rounded-md hover:bg-orange-700" wire:click="downloadPostman({{ $selectedService['id'] }})">
+                        <i class='bx bx-cloud-download bx-flashing'> download </i>
+                    </button>
+                </div> --}}
+
+                <div class="px-4 py-5 sm:p-6 w-full">
+                    <button type="button" class="px-4 py-2 mr-2 text-white bg-orange-500 rounded-md hover:bg-orange-700" wire:click="downloadPostman({{ $selectedService['id'] }})">
+                        <i class='bx bx-cloud-download bx-flashing'> download </i>
+                    </button>
+                </div>
 
                 <div class="px-4 py-4 sm:px-6 bg-gray-100 flex justify-end">
                     <button type="button" class="px-4 py-2 mr-2 text-white bg-gray-500 rounded-md hover:bg-gray-700"

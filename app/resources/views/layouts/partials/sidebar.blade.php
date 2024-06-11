@@ -204,7 +204,7 @@
                     </a>
                 </div>
                 <div class="nav_list">
-                    <a href="{{ route('posts.index') }}" class="nav_link active">
+                    <a href="{{ route('posts.index') }}" class="nav_link">
                         <i class='bx bxs-book-content'></i>
                         <span class="nav_name">Tutorials</span>
                     </a>

@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Menggunakan nama aplikasi dari konfigurasi, default ke 'ESB Playbook' -->
     <title>{{ config('app.name', 'ESB Playbook') }}</title>
+
+    <link rel="icon" href="{{ asset('esbplaybook.png') }}" type="image/png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,6 +19,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Styles -->
+
     <script type="text/javascript">
         window.$crisp = [];
         window.CRISP_WEBSITE_ID = "3d9c6a5a-01c6-43d1-a6dc-8cdd15a2d488";
@@ -27,6 +31,7 @@
             d.getElementsByTagName("head")[0].appendChild(s);
         })();
     </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script> --}}
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -35,38 +40,24 @@
 
     </style>
     @livewireStyles
-
 </head>
 
-<body class="font-sans antialiased ">
-
-
+<body class="font-sans antialiased">
     @include('layouts.partials.sidebar')
     {{-- <x-banner /> --}}
-
     @include('layouts.partials.header')
     @include('layouts.partials.sidebar')
-
     @yield('hero')
-
-    <main class="container mx-auto px-5 flex ;  flex-direction: row-reverse">
+    <main class="container mx-auto px-5 flex ; flex-direction: row-reverse">
         {{ $slot }}
     </main>
-
     @include('layouts.partials.footer')
-
     @stack('modals')
-
-
-
     <script>
         $(document).ready(function(e) {
             $("#toggle_btn").click(function() {
-                alert("Hi clikc");
+                window.location.href = "http://127.0.0.1:8000/";
             });
-
-            //$(".header").hide();
-
         });
 
         $(document).on('click', '#toggle_btn', function() {
@@ -78,24 +69,18 @@
             });
 
             $(".header_toggle").attr('id', 'toggle-muncul');
-
-            // $("#toggle-muncul").css({'width' : '0%',
-            // });
         });
+
         $(document).on('click', '#toggle-muncul', function() {
             console.log('ccc');
             $("#nav-bar").css({
-                'width': ' 0%',
-                'margin-left': ' 0'
+                'width': '0%',
+                'margin-left': '0'
             });
             $(".header_toggle").attr('id', 'toggle_btn');
-
         });
     </script>
-
     @livewireScripts
-
 </body>
-
 
 </html>
