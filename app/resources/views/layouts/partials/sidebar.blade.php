@@ -212,7 +212,7 @@
                         <i class='bx bxs-book-content'></i>
                         <span class="nav_name">Tutorials</span>
                     </a>
-                    <a href="#" class="nav_link">
+                    <a href="{{ route('posts.data') }}" class="nav_link">
                         <i class='bx bxs-error'></i>
                         <span class="nav_name">List eror</span>
                     </a>

@@ -8,7 +8,8 @@ use App\Http\Controllers\PostmanListController;
 use App\Http\Controllers\ServiceCotroller;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ListService;
-use App\Livewire\ChannelIdsComponent;
+use app\app\Livewire\ChannelIdsComponent;
+use Livewire\Livewire;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,8 +21,12 @@ use App\Livewire\ChannelIdsComponent;
 |
 */
 
-Route::get('/home', ChannelIdsComponent::class);
-Route::get('channels/{channel:channel_name}', [ChannelController::class, 'show'])->name('channels.show');
+
+// Route::get('/home', ChannelIdsComponent::class);
+// Route::get('/channels', ChannelIdsComponent::class)->name('channels');
+Route::get('channels/{channel:channel_name}', [ChannelController::class, 'show'])->name('posts.channelshow');
+
+
 
 
 // Route::get('/channels', [ChannelIdsComponent::class, 'index'])->name('channels.index');
@@ -33,6 +38,12 @@ Route::get('/download_postman/{id}', [ServiceCotroller::class, 'downloadPostman'
 Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
 
 Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+
+// Route::get('/channels', [ServiceCotroller::class, 'listChannel'])->name('listchannel');
+
+Route::get('/channels', [ChannelController::class, 'index'])->name('posts.data');
+Route::get('/channels/clear-filters', [ChannelController::class, 'clearFilters'])->name('posts.clear-filters');
+
 
 //Route::get('/listservice', [ListService::class,'render'])->name('listservice');
 Route::get('/listservice', ListService::class)->name('listservice');

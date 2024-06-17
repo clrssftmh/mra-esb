@@ -1,4 +1,5 @@
 <div class="row" style="width: 120%">
+    @livewire('list-service')
     <section class="mt-10">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
             <!-- Start coding here -->
@@ -37,11 +38,12 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 align:center">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
-                                <th scope="col" class="px-4 py-3">Service ID</th>
+                                <th scope="col" class="px-4 py-3">Channel id</th>
+                                <th scope="col" class="px-4 py-3">Channel name</th>
+                                <th scope="col" class="px-4 py-3">Service id</th>
                                 <th scope="col" class="px-4 py-3">Service name</th>
-                                <th scope="col" class="px-4 py-3">url msr </th>
                                 {{-- <th scope="col" class="px-4 py-3">Description</th> --}}
-                                <th scope="col" class="px-4 py-3">url esb</th>
+                                <th scope="col" class="px-4 py-3">ESB type</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
                                 </th>
@@ -51,12 +53,13 @@
                             @foreach ($servicelists as $service)
                                 <tr wire:key = "{{ $service->id }}" class="border-b dark:border-gray-700">
                                     <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
-                                        {{ $service->service_id }}</th>
-                                    <td class="px-4 py-3">{{ $service->service_name }}</td>
+                                        {{ $service->channel_id }}</th>
+                                    <td class="px-4 py-3">{{ $service->channel_name }}</td>
+                                    <td class="px-4 py-3">{{ $service->service_id }}</td>
                                     <td class="px-4 py-3 text-green-500">
-                                        {{ $service->service_endpoint_msr }}</td>
+                                        {{ $service->service_name }}</td>
                                     {{-- <td class="px-4 py-3">{{ $service->service_desc }}</td> --}}
-                                    <td class="px-4 py-3">{{ $service->service_endpoint_esb }}</td>
+                                    <td class="px-4 py-3">{{ $service->esb_type }}</td>
                                     <td class="px-4 py-3 flex items-center justify-end">
                                         <button class="px-3 py-1 bg-green-500 text-white rounded"
                                             wire:click="openModal({{ $service }})">
@@ -98,24 +101,24 @@
                 <div class="px-4 py-5 sm:px-6 bg-gray-100 flex justify-between items-center">
                     <h4 class="text-lg font-medium leading-6 text-gray-900"> Service name</h4>
                     <h5 class="text-lg font-small leading-9 text-gray-900">{{ $selectedService['service_name'] }}</h5>
-                    <button type="button" class="text-gray-400 hover:text-gray-600" wire:click="closeModal">
+                    {{-- <button type="button" class="text-gray-400 hover:text-gray-600" wire:click="closeModal">
                         &times;
-                    </button>
+                    </button> --}}
                 </div>
-                <div class="px-4 py-5 sm:p-6">
+                {{-- <div class="px-4 py-5 sm:p-6">
                     <h5> Service Description</h5>
-                    <p>{{ $selectedService['service_desc'] }}</p>
+                    <p>{{ $selectedService['service_name'] }}</p>
                     <!-- Add other details as needed -->
-                </div>
-                <div class="px-4 py-5 sm:p-6 w-full">
+                </div> --}}
+                {{-- <div class="px-4 py-5 sm:p-6 w-full">
 
                     <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">
                         Sample Request</label>
                     <textarea id="message" rows="4"
                         class="block p-2.5 w-full text-sm text-gray-900 bg-neutral-100 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="{{ $selectedService['service_desc'] }}"></textarea>
+                        placeholder="{{ $selectedService['service_name'] }}"></textarea>
 
-                </div>
+                </div> --}}
 
 {{--
                 <div class="px-4 py-5 sm:p-6 w-full">
@@ -142,21 +145,24 @@
                     </button>
                 </div> --}}
 
-                <div class="px-4 py-5 sm:p-6 w-full">
+                {{-- <div class="px-4 py-5 sm:p-6 w-full">
                     <button type="button" class="px-4 py-2 mr-2 text-white bg-orange-500 rounded-md hover:bg-orange-700" wire:click="downloadPostman({{ $selectedService['id'] }})">
-                        <i class='bx bx-cloud-download bx-flashing'> download </i>
+                        <i class='bx bx-cloud-download bx-flashing'>Download Postman Collection</i>
                     </button>
-                </div>
+                </div> --}}
 
                 <div class="px-4 py-4 sm:px-6 bg-gray-100 flex justify-end">
                     <button type="button" class="px-4 py-2 mr-2 text-white bg-gray-500 rounded-md hover:bg-gray-700"
                         wire:click="closeModal">Close</button>
-                    <button type="button" class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-700">Save
-                        changes</button>
+                        <button type="button" class="px-4 py-2 mr-2 text-white bg-orange-500 rounded-md hover:bg-orange-700" wire:click="downloadPostman({{ $selectedService['id'] }})">
+                            <i class='bx bx-cloud-download bx-flashing'>Download Postman Collection</i>
+                        </button>
                 </div>
+
             </div>
             </section>
         </div>
+
     @endif
 
 </div>

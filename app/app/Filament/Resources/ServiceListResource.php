@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ServiceListResource\Pages;
 use App\Filament\Resources\ServiceListResource\RelationManagers;
-use App\Models\ServiceList;
+use App\Models\Service;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -23,7 +23,7 @@ use Filament\Forms\Components\Select;
 
 class ServiceListResource extends Resource
 {
-    protected static ?string $model = ServiceList::class;
+    protected static ?string $model = Service::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -58,21 +58,21 @@ class ServiceListResource extends Resource
         return $form
         ->schema([
             Section::make('Main Content')->schema([
-                TextInput::make('service_id')
+                TextInput::make('channel_id')
+            ->required()->minLength(1)->maxLength(150),
+            TextInput::make('channel_name')
+            ->required()->minLength(1)->maxLength(150),
+            TextInput::make('service_id')
             ->required()->minLength(1)->maxLength(150),
             TextInput::make('service_name')
             ->required()->minLength(1)->maxLength(150),
-            TextInput::make('service_desc')
-            ->required()->minLength(1)->maxLength(150),
-            TextInput::make('service_endpoint_esb')
-            ->required()->minLength(1)->maxLength(150),
-            Select::make('channel_id')
-                            ->multiple()
-                            ->relationship('channelid', 'channel_name')
-                            ->searchable()
-            ->native(true),
-            TextInput::make('service_endpoint_msr')
-            ->required()->minLength(1)->maxLength(150),
+            Select::make('esb_type')
+            ->options([
+                'monolith' => 'Monolith',
+                'microservice' => 'Microservice',
+            ]),
+            // TextInput::make('service_endpoint_msr')
+            // ->required()->minLength(1)->maxLength(150),
             FileUpload::make('service_postman')
             ->directory('posts/json_files') // Specify the directory where JSON files will be stored
             ->acceptedFileTypes(['application/json']) // Accept only JSON files
@@ -91,17 +91,16 @@ class ServiceListResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('service_id'),
+                TextColumn::make('channel_id'),
+                TextColumn::make('channel_name')->sortable()->searchable(),
+                TextColumn::make('service_id')->sortable()->searchable(),
                 TextColumn::make('service_name')->sortable()->searchable(),
-                TextColumn::make('service_endpoint_esb')->sortable()->searchable(),
-                TextColumn::make('service_endpoint_msr')->sortable()->searchable(),
-
-                TextColumn::make('service_postman')->wrap()->words(5)->sortable()->searchable(),
-
+                TextColumn::make('esb_type')->wrap()->words(5)->sortable()->searchable(),
                 TextColumn::make('service_postman')->sortable()->searchable()
-            ->filters([
-                //RIYANDO FRIENDESWAN GINTING MUNTHE	iijj
             ])
+            // ->filters([
+            //     //RIYANDO FRIENDESWAN GINTING MUNTHE	iijj
+            // ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
@@ -109,8 +108,7 @@ class ServiceListResource extends Resource
                         Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ])
-            ])
-        ]);
+            ]);
     }
 
     public static function getRelations(): array

@@ -18,13 +18,13 @@
         </div>
     </div> --}}
 
-    <div id="nav-right" class="flex items-center md:space-x-6">
-        {{-- @auth
+    {{-- <div id="nav-right" class="flex items-center md:space-x-6">
+        @auth
             @include('layouts.partials.header-right-auth')
         @else
             @include('layouts.partials.header-right-guest')
-        @endauth --}}
+        @endauth
         <img style="display: block; margin-left: auto; width: 15%;" src="http://127.0.0.1:8000/storage/posts/thumbnails/esbplaybook.png">
-    </div>
+    </div> --}}
 
 </nav>

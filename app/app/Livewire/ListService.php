@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\serviceList;
+use App\Models\Service;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Response;
 
@@ -19,7 +19,7 @@ class ListService extends Component
     public $modal = false;
 
 
-    public $service_desc,$service_endpoint_esb ,$service_endpoint_msr,$service_postman,$selectedService;
+    public $channel_id,$channel_name,$service_id,$service_name,$esb_type,$selectedService;
 
     public function openModal($service)
     {
@@ -92,10 +92,10 @@ class ListService extends Component
 
     public function render()
     {
-        $allservice = serviceList::get();
+        $allservice = service::get();
 
         return view('livewire.service-list', [
-            'servicelists' => serviceList::search($this->search)->paginate($this->perPage)
+            'servicelists' => Service::search($this->search)->paginate($this->perPage)
         ])->layout('layouts.app');
     }
 }
