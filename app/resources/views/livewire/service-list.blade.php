@@ -1,5 +1,4 @@
 <div class="row" style="width: 120%">
-    @livewire('list-service')
     <section class="mt-10">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
             <!-- Start coding here -->
