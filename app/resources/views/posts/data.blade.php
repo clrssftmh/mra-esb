@@ -15,44 +15,10 @@
                 <div class="mt-4">
                     {{ $channelIds->links() }} <!-- Render the pagination links -->
                 </div>
-                {{-- <a class="mt-10 block text-center text-lg text-yellow-500 font-semibold"
-                   href="{{ route('blog.index') }}">More Posts</a> --}}
-                {{-- <div class="flex items-center mt-4">
-                    <span class="mr-2 text-gray-500">{{ $latestUpdatedAt->diffForHumans() }}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3"
-                         stroke="currentColor" class="w-5 h-5 text-gray-500">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </div>
-            </div>
         </div>
     </article> --}}
 
-
-        {{-- <div class="px-3 py-6 lg:px-7">
-            <div class="flex items-center justify-between border-b border-gray-100">
-                <div class="text-gray-600">
-                    @if ($search)
-                        <a href="{{ route('posts.data') }}" class="mr-3 text-xs text-gray-500">X</a>
-                    @endif
-                    @if ($search)
-                        <span class="ml-2">
-                            containing : <strong>{{ $search }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-            <div class="py-4">
-                @foreach ($channelIds as $channel)
-                    <x-posts.post-cardchannel :channel="$channel" class="md:col-span-1 col-span-3" />
-                @endforeach
-            </div>
-            <div class="my-3">
-                {{ $channelIds->onEachSide(1)->links() }}
-            </div>
-        </div> --}}
-
+{{--
             <div class="px-3 py-6 lg:px-7">
                 <!-- Search Form -->
                 <form method="GET" action="{{ route('posts.data') }}">
@@ -81,8 +47,39 @@
                 <div class="my-3">
                     {{ $channelIds->onEachSide(1)->links() }}
                 </div>
-            </div>
+            </div> --}}
 
+            <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+                <div class="flex items-center justify-between d p-4">
+                    <div class="flex">
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                    fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <input wire:model.live.debounce.300ms="search" type="text"
+                                style="padding-left:32px !important "
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
+                                placeholder="Search" required="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-5 gap-4 mt-4 p-4">
+                    @foreach ($channelIds as $channel)
+                        <x-posts.post-cardchannel :channel="$channel" class="col-span-1" />
+                    @endforeach
+                </div>
+
+                <div class="my-3">
+                    {{ $channelIds->onEachSide(1)->links() }}
+                </div>
+
+            </div>
 
 </x-app-layout>
 

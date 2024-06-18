@@ -10,54 +10,46 @@ use Illuminate\Broadcasting\Channel;
 
 class ChannelController extends Controller
 {
-    // public function index(Request $request)
-    // {
-    //     $search = $request->input('search');
-    //     $channelIdsQuery = ChannelId::query();
 
-    //     if ($search) {
-    //         $channelIdsQuery->where('channel_name', 'like', "%{$search}%");
-    //     }
-
-    //     $channelIds = $channelIdsQuery->paginate(10);
-
-    //     $latestUpdatedAt = ChannelId::orderBy('updated_at', 'desc')->first()->updated_at;
-
-    //     return view('posts.data', [
-    //         'channelIds' => $channelIds,
-    //         'latestUpdatedAt' => $latestUpdatedAt,
-    //         'search' => $search,
-    //     ]);
-    // }
-
-    // public function clearFilters()
-    // {
-    //     return redirect()->route('posts.data');
-    // }
 
     public function index(Request $request)
     {
-        $search = $request->input('search');
-        $channelIdsQuery = ChannelId::query();
+        $search = $request->session()->get('search');
+        $category = $request->session()->get('category');
+
+        $query = ChannelId::query();
 
         if ($search) {
-            $channelIdsQuery->where('channel_name', 'like', "%{$search}%");
+            $query->where('channel_name', 'like', '%' . $search . '%');
         }
 
-        $channelIds = $channelIdsQuery->paginate(10);
-        $latestUpdatedAt = ChannelId::orderBy('updated_at', 'desc')->first()->updated_at;
+        if ($category) {
+            $query->where('title', $category);
+        }
 
-        return view('posts.data', [
-            'channelIds' => $channelIds,
-            'latestUpdatedAt' => $latestUpdatedAt,
-            'search' => $search,
-        ]);
+        $channelIds = $query->paginate(10);
+
+        return view('posts.data', compact('channelIds', 'search', 'category'));
     }
 
-    public function clearFilters()
+    public function search(Request $request)
     {
+        $search = $request->input('search');
+        $category = $request->input('category');
+
+        $request->session()->put('search', $search);
+        $request->session()->put('category', $category);
+
         return redirect()->route('posts.data');
     }
+
+    public function clearFilters(Request $request)
+    {
+        $request->session()->forget(['search', 'category']);
+
+        return redirect()->route('posts.data');
+    }
+
 
     public function show(ChannelId $channel)
     {
