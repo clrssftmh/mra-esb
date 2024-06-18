@@ -37,11 +37,12 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 align:center">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
-                                <th scope="col" class="px-4 py-3">Service ID</th>
-                                <th scope="col" class="px-4 py-3">Service name</th>
-                                <th scope="col" class="px-4 py-3">url msr </th>
+                                <th scope="col" class="px-4 py-3">CHANNEL ID</th>
+                                <th scope="col" class="px-4 py-3">CHANNEL NAME</th>
+                                <th scope="col" class="px-4 py-3">SERVICE ID </th>
+                                <th scope="col" class="px-4 py-3">SERVICE NAME</th>
                                 {{-- <th scope="col" class="px-4 py-3">Description</th> --}}
-                                <th scope="col" class="px-4 py-3">url esb</th>
+                                <th scope="col" class="px-4 py-3">ESB TYPE</th>
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
                                 </th>
@@ -51,12 +52,13 @@
                             @foreach ($servicelists as $service)
                                 <tr wire:key = "{{ $service->id }}" class="border-b dark:border-gray-700">
                                     <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
-                                        {{ $service->service_id }}</th>
-                                    <td class="px-4 py-3">{{ $service->service_name }}</td>
+                                        {{ $channel_id }}</th>
+                                    <td class="px-4 py-3">{{ $channel_name }}</td>
+                                    <td class="px-4 py-3">{{ $service->service_id }}</td>
                                     <td class="px-4 py-3 text-green-500">
-                                        {{ $service->service_endpoint_msr }}</td>
+                                        {{ $service->service_name }}</td>
                                     {{-- <td class="px-4 py-3">{{ $service->service_desc }}</td> --}}
-                                    <td class="px-4 py-3">{{ $service->service_endpoint_esb }}</td>
+                                    <td class="px-4 py-3">{{ $service->service_type }}</td>
                                     <td class="px-4 py-3 flex items-center justify-end">
                                         <button class="px-3 py-1 bg-green-500 text-white rounded"
                                             wire:click="openModal({{ $service }})">
@@ -117,33 +119,11 @@
 
                 </div>
 
-{{--
+
                 <div class="px-4 py-5 sm:p-6 w-full">
-<<<<<<< HEAD
                     <button type="button"
                         class="px-4 py-2 mr-2 text-white bg-orange-500 rounded-md hover:bg-orange-700"
                         wire:click="downloadPostman({{ $selectedService['id'] }})">
-                        <i class='bx bx-cloud-download bx-flashing'> download </i>
-                    </button>
-                </div>
-=======
-                    <a type="button" class="px-4 py-2 mr-2 text-white bg-orange-500 rounded-md hover:bg-orange-700" href="/download_postman/{{ $selectedService['id'] }}"
-                        {{-- wire:click="download({{ $selectedService['service_id'] }})"> --}}
-                        {{-- <i class='bx bx-cloud-download bx-flashing'>
-                            download
-                        </i></a>
-
-                </div> --}}
->>>>>>> 6cda0da323414c21696d92d06f7bf45ef0bb21a5
-
-                {{-- <div class="px-4 py-5 sm:p-6 w-full">
-                    <button type="button" class="px-4 py-2 mr-2 text-white bg-orange-500 rounded-md hover:bg-orange-700" wire:click="downloadPostman({{ $selectedService['id'] }})">
-                        <i class='bx bx-cloud-download bx-flashing'> download </i>
-                    </button>
-                </div> --}}
-
-                <div class="px-4 py-5 sm:p-6 w-full">
-                    <button type="button" class="px-4 py-2 mr-2 text-white bg-orange-500 rounded-md hover:bg-orange-700" wire:click="downloadPostman({{ $selectedService['id'] }})">
                         <i class='bx bx-cloud-download bx-flashing'> download </i>
                     </button>
                 </div>
@@ -151,8 +131,8 @@
                 <div class="px-4 py-4 sm:px-6 bg-gray-100 flex justify-end">
                     <button type="button" class="px-4 py-2 mr-2 text-white bg-gray-500 rounded-md hover:bg-gray-700"
                         wire:click="closeModal">Close</button>
-                    <button type="button" class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-700">Save
-                        changes</button>
+                    {{-- <button type="button" class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-700">Save
+                        changes</button> --}}
                 </div>
             </div>
             </section>

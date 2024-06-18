@@ -18,6 +18,7 @@ class serviceList extends Model
         'service_endpoint_esb',
         'service_endpoint_msr',
         'service_postman',
+        'service_type',
         // 'channel_id'
     ];
 
@@ -25,10 +26,8 @@ class serviceList extends Model
         $query->where('service_name','like',"%{$value}%")
         ->orwhere('service_endpoint_esb','like',"%{$value}%")
         ->orwhere('service_endpoint_msr','like',"%{$value}%")
-        ->orwhere('service_postman','like',"%{$value}%");;
-
-
-
+        ->orwhere('service_postman','like',"%{$value}%")
+        >orwhere('service_type','like',"%{$value}%");
     }
 
     public function channelid()

@@ -12,7 +12,7 @@ class ChannelIdsComponent extends Component
     public function mount()
     {
         // Mengambil data dari tabel channel_ids
-        $this->channelIds = ChannelId::all();
+        $this->channelIds = ChannelId::get();
     }
 
     public function render()

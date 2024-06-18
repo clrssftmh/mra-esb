@@ -73,6 +73,12 @@ class ServiceListResource extends Resource
             ->native(true),
             TextInput::make('service_endpoint_msr')
             ->required()->minLength(1)->maxLength(150),
+            Select::make('service_type')
+            ->options([
+                'msr' => 'MICROSERVICE',
+                'monolith' => 'MONOLITH',
+
+            ])->required()->native(false),
             FileUpload::make('service_postman')
             ->directory('posts/json_files') // Specify the directory where JSON files will be stored
             ->acceptedFileTypes(['application/json']) // Accept only JSON files
@@ -94,14 +100,16 @@ class ServiceListResource extends Resource
                 TextColumn::make('service_id'),
                 TextColumn::make('service_name')->sortable()->searchable(),
                 TextColumn::make('service_endpoint_esb')->sortable()->searchable(),
-                TextColumn::make('service_endpoint_msr')->sortable()->searchable(),
+                //TextColumn::make('service_endpoint_msr')->sortable()->searchable(),
 
-                TextColumn::make('service_postman')->wrap()->words(5)->sortable()->searchable(),
+                //TextColumn::make('service_postman')->wrap()->words(5)->sortable()->searchable(),
 
-                TextColumn::make('service_postman')->sortable()->searchable()
+                //TextColumn::make('service_postman')->sortable()->searchable()
+
+                ])
             ->filters([
-                //RIYANDO FRIENDESWAN GINTING MUNTHE	iijj
-            ])
+
+             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
@@ -110,7 +118,7 @@ class ServiceListResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ])
             ])
-        ]);
+        ;
     }
 
     public static function getRelations(): array

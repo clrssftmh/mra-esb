@@ -9,6 +9,7 @@ use App\Http\Controllers\ServiceCotroller;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ListService;
 use App\Livewire\ChannelIdsComponent;
+use App\Livewire\ListServiceDetail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,7 @@ use App\Livewire\ChannelIdsComponent;
 */
 
 Route::get('/home', ChannelIdsComponent::class);
-Route::get('channels/{channel:channel_name}', [ChannelController::class, 'show'])->name('channels.show');
+Route::get('channels/{id}', ListServiceDetail::class)->name('channels.show');
 
 
 // Route::get('/channels', [ChannelIdsComponent::class, 'index'])->name('channels.index');

@@ -17,6 +17,7 @@ class ListService extends Component
     public $search = '';
     public $type;
     public $modal = false;
+    public $idchanel = '';
 
 
     public $service_desc,$service_endpoint_esb ,$service_endpoint_msr,$service_postman,$selectedService;
@@ -84,6 +85,16 @@ class ListService extends Component
     //         return abort(404, 'File not found');
     //     }
     // }
+
+    public function show(string $id_channel)
+    {
+        $this->modal = false;
+        $this->idchanel = $id_channel;
+        return view('livewire.service-list', [
+            'servicelists' => serviceList::where('channel_id', $this->idchanel)->paginate($this->perPage),
+            'modal'=> $this->modal
+        ])->layout('layouts.app');
+    }
 
     public function downloadPostman($id)
     {
