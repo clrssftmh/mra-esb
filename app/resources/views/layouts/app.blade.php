@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Menggunakan nama aplikasi dari konfigurasi, default ke 'ESB Playbook' -->
-    <title>{{ config('app.name', 'ESB Playbook') }}</title>
+    <title>{{ config('app.name', 'ESB SERVE') }}</title>
 
     <link rel="icon" href="{{ asset('esbplaybook.png') }}" type="image/png" />
 

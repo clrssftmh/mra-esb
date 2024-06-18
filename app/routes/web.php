@@ -35,6 +35,14 @@ Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
 
 Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 
+// Route::get('/channels', [ServiceCotroller::class, 'listChannel'])->name('listchannel');
+
+Route::get('/channels', [ChannelController::class, 'index'])->name('posts.data');
+Route::get('/channels/clear-filters', [ChannelController::class, 'clearFilters'])->name('posts.clear-filters');
+Route::get('/channel', 'ChannelController@getData')->name('posts.data');
+
+
+
 //Route::get('/listservice', [ListService::class,'render'])->name('listservice');
 Route::get('/listservice', ListService::class)->name('listservice');
 

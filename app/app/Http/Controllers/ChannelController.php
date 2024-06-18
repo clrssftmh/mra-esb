@@ -2,41 +2,54 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\ChannelId;
+use App\Models\Service;
+use Illuminate\Http\Request;
+use App\Models\Category;
 use Illuminate\Broadcasting\Channel;
 use App\Models\serviceList;
 
 class ChannelController extends Controller
 {
-    // public function index()
-    // {
-    //     return view(
-    //         'channels.index',
-    //         [
-    //             'categories' => Category::whereHas('posts', function ($query) {
-    //                 $query->published();
-    //             })->take(10)->get()
-    //         ]
-    //     );
-    // }
 
-    // public function show(Channel $channel)
-    // {
-    //     return view(
-    //         'channels.show',
-    //         [
-    //             'channel' => $channel
-    //         ]
-    //     );
-    // }
 
-    public function show(string $channel)
+    public function index(Request $request)
     {
-        //dd($channel);
-        //$allservice = serviceList::;
+        $search = $request->session()->get('search');
+        $category = $request->session()->get('category');
 
+        $query = ChannelId::query();
 
-        //return view('livewire.service-list', ['channel' => $channel]);
+        if ($search) {
+            $query->where('channel_name', 'like', '%' . $search . '%');
+        }
+
+        if ($category) {
+            $query->where('title', $category);
+        }
+
+        $channelIds = $query->paginate(10);
+
+        return view('posts.data', compact('channelIds', 'search', 'category'));
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $category = $request->input('category');
+
+        $request->session()->put('search', $search);
+        $request->session()->put('category', $category);
+
+        return redirect()->route('posts.data');
+    }
+
+    public function clearFilters(Request $request)
+    {
+        $request->session()->forget(['search', 'category']);
+
+        return redirect()->route('posts.data');
+    }
+
+
 }

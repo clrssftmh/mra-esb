@@ -57,6 +57,7 @@
                                     <td class="px-4 py-3">{{ $service->service_id }}</td>
                                     <td class="px-4 py-3 text-green-500">
                                         {{ $service->service_name }}</td>
+                                    {{ $service->service_name }}</td>
                                     {{-- <td class="px-4 py-3">{{ $service->service_desc }}</td> --}}
                                     <td class="px-4 py-3">{{ $service->service_type }}</td>
                                     <td class="px-4 py-3 flex items-center justify-end">
@@ -98,15 +99,17 @@
         <div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
                 <div class="px-4 py-5 sm:px-6 bg-gray-100 flex justify-between items-center">
-                    <h4 class="text-lg font-medium leading-6 text-gray-900"> Service name</h4>
-                    <h5 class="text-lg font-small leading-9 text-gray-900">{{ $selectedService['service_name'] }}</h5>
+
                     <button type="button" class="text-gray-400 hover:text-gray-600" wire:click="closeModal">
                         &times;
                     </button>
                 </div>
                 <div class="px-4 py-5 sm:p-6">
-                    <h5> Service Description</h5>
-                    <p>{{ $selectedService['service_desc'] }}</p>
+                    <h5 class="text-lg font-medium leading-6 text-gray-900"> Service Description</h5>
+                    <p>{{ $selectedService['service_name'] }}</p>
+
+                    <h4 class="text-lg font-medium leading-6 text-gray-900"> Service name</h4>
+                    <h5 class="text-lg font-small leading-9 text-gray-900">{{ $selectedService['service_name'] }}</h5>
                     <!-- Add other details as needed -->
                 </div>
                 <div class="px-4 py-5 sm:p-6 w-full">
@@ -115,7 +118,7 @@
                         Sample Request</label>
                     <textarea id="message" rows="4"
                         class="block p-2.5 w-full text-sm text-gray-900 bg-neutral-100 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="{{ $selectedService['service_desc'] }}"></textarea>
+                        placeholder="{{ $selectedService['service_name'] }}"></textarea>
 
                 </div>
 
@@ -134,6 +137,7 @@
                     {{-- <button type="button" class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-700">Save
                         changes</button> --}}
                 </div>
+
             </div>
             </section>
         </div>
