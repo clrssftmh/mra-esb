@@ -42,7 +42,7 @@ class ListServiceDetail extends Component
     {
         $channel = ChannelId::findOrFail($this->id_service);
         return view('livewire.service-list', [
-            'servicelists' => serviceList::where('channel_id', $this->id_service)->paginate($this->perPage),
+            'servicelists' => serviceList::where('id', $this->id_service)->paginate($this->perPage),
             'channel_id'=> $channel->channel_id,
             'channel_name' => $channel->channel_name
         ])->layout('layouts.app');

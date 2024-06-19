@@ -39,7 +39,7 @@ Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('posts.sh
 
 Route::get('/channels', [ChannelController::class, 'index'])->name('posts.data');
 Route::get('/channels/clear-filters', [ChannelController::class, 'clearFilters'])->name('posts.clear-filters');
-Route::get('/channel', 'ChannelController@getData')->name('posts.data');
+// Route::get('/channel', 'ChannelController@getData')->name('posts.data');
 
 
 
