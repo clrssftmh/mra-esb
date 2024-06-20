@@ -57,7 +57,6 @@
                                     <td class="px-4 py-3">{{ $service->service_id }}</td>
                                     <td class="px-4 py-3 text-green-500">
                                         {{ $service->service_name }}</td>
-                                    {{ $service->service_name }}</td>
                                     {{-- <td class="px-4 py-3">{{ $service->service_desc }}</td> --}}
                                     <td class="px-4 py-3">{{ $service->service_type }}</td>
                                     <td class="px-4 py-3 flex items-center justify-end">

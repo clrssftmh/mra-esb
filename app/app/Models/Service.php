@@ -24,7 +24,7 @@ class Service extends Model
         ->orwhere('channel_name','like',"%{$value}%")
         ->orwhere('service_id','like',"%{$value}%")
         ->orwhere('service_name','like',"%{$value}%")
-        ->orwhere('service_postman','like',"%{$value}%");;
+        ;;
 
 
 

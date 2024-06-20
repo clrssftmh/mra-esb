@@ -35,6 +35,7 @@ class ChannelController extends Controller
 
     public function search(Request $request)
     {
+        dd($request);
         $search = $request->input('search');
         $category = $request->input('category');
 

@@ -18,6 +18,7 @@ class ListServiceDetail extends Component
     public $perPage = 10;
     public $modal = false;
     public $selectedService;
+    public $search = '';
 
     public function mount($id)
     {
@@ -40,12 +41,14 @@ class ListServiceDetail extends Component
 
     public function render()
     {
+
         $channel = ChannelId::findOrFail($this->id_service);
         return view('livewire.service-list', [
-            'servicelists' => serviceList::where('channel_id', $this->id_service)->paginate($this->perPage),
+            'servicelists' => serviceList::where('id', $this->id_service)->search($this->search)->paginate($this->perPage),
             'channel_id'=> $channel->channel_id,
             'channel_name' => $channel->channel_name
         ])->layout('layouts.app');
         return view('livewire.list-service-detail');
     }
 }
+//Service::search($this->search)->paginate($this->perPage)

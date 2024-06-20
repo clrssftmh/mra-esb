@@ -24,6 +24,7 @@ use App\Livewire\ListServiceDetail;
 Route::get('/home', ChannelIdsComponent::class);
 Route::get('channels/{id}', ListServiceDetail::class)->name('channels.show');
 
+//Route::get('channels/{id}', ListServiceDetail::class)->name('channels.thishow');
 
 // Route::get('/channels', [ChannelIdsComponent::class, 'index'])->name('channels.index');
 Route::get('/', HomeController::class)->name('home');
@@ -38,8 +39,8 @@ Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('posts.sh
 // Route::get('/channels', [ServiceCotroller::class, 'listChannel'])->name('listchannel');
 
 Route::get('/channels', [ChannelController::class, 'index'])->name('posts.data');
-Route::get('/channels/clear-filters', [ChannelController::class, 'clearFilters'])->name('posts.clear-filters');
-Route::get('/channel', 'ChannelController@getData')->name('posts.data');
+//Route::get('/channels/clear-filters', [ChannelController::class, 'clearFilters'])->name('posts.clear-filters');
+Route::get('/channel', 'ChannelController@getData')->name('posts.datas');// add s posts.data duplicate
 
 
 
